@@ -25,7 +25,12 @@ public class Order {
 
     private OrderStatus status;
 
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     public enum OrderStatus {
         PREPARING, DELIVERING, DELIVERED, CANCELED
