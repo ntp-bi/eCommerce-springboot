@@ -6,6 +6,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 public class ProductDTO {
@@ -24,4 +25,6 @@ public class ProductDTO {
 
     @NotBlank(message = "Product description is required")
     private String description;
+
+    private List<CommentDTO> comments;
 }
