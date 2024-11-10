@@ -34,6 +34,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    private boolean emailConfirmation;
+
+    private String confirmationCode;
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
 
