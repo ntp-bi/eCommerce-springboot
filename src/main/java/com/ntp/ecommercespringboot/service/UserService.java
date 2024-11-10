@@ -6,7 +6,6 @@ import com.ntp.ecommercespringboot.model.User;
 import com.ntp.ecommercespringboot.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -62,4 +61,9 @@ public class UserService {
         int code = 100000 + random.nextInt(900000);
         return String.valueOf(code);
     }
+
+    public User getUserEmailById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+    }
+
 }
